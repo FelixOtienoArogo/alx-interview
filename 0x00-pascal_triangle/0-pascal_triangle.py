@@ -4,7 +4,14 @@
 
 Creating a pascal triangle for a given number n.
 """
-import math
+
+
+def factorial(x):
+    """Return the factorial of the input."""
+    if x < 1:
+        return 1
+    else:
+        return (x * factorial(x - 1))
 
 
 def pascal_triangle(n):
@@ -17,5 +24,5 @@ def pascal_triangle(n):
             triangle.append([])
         for j in range(i + 1):
             triangle[i].append(int(
-                math.factorial(i)/(math.factorial(i - j) * math.factorial(j))))
+                factorial(i)/(factorial(i - j) * factorial(j))))
     return triangle
