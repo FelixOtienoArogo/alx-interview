@@ -7,7 +7,11 @@ Creating a pascal triangle for a given number n.
 
 
 def factorial(x):
-    """Return the factorial of the input."""
+    """
+    Return the factorial of the input.
+
+    The complexity should fit the requirement.
+    """
     if x < 1:
         return 1
     else:
@@ -15,7 +19,11 @@ def factorial(x):
 
 
 def pascal_triangle(n):
-    """Return a list of integers representing the Pascal's triangle of n."""
+    """
+    Return a list of integers representing.
+
+    the Pascal's triangle of n.
+    """
     triangle = [[]]
     if n <= 0:
         return []
