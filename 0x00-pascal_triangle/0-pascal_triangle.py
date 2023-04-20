@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-"""
-0-pascal_traingle.
+"""0-pascal_traingle.
 
 Creating a pascal triangle for a given number n.
 """
 
 
 def factorial(x):
-    """
-    Return the factorial of the input.
+    """Return the factorial of the input.
 
     The complexity should fit the requirement.
     """
