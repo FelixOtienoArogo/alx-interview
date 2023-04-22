@@ -5,30 +5,19 @@ Creating a pascal triangle for a given number n.
 """
 
 
-def factorial(x):
-    """Return the factorial of the input.
-
-    The complexity should fit the requirement.
-    """
-    if x < 1:
-        return 1
-    else:
-        return (x * factorial(x - 1))
-
-
 def pascal_triangle(n):
     """
     Return a list of integers representing.
 
     the Pascal's triangle of n.
     """
-    triangle = [[]]
+    triangle = [[1]]
     if n <= 0:
         return []
-    for i in range(n):
-        if i < n - 1:
-            triangle.append([])
-        for j in range(i + 1):
-            triangle[i].append(int(
-                factorial(i)/(factorial(i - j) * factorial(j))))
+    for i in range(1, n):
+        line = [1]
+        for j in range(len(triangle[i - 1]) - 1):
+            line.append(triangle[i - 1][j] + triangle[i - 1][j + 1])
+        line.append(1)
+        triangle.append(line)
     return triangle
