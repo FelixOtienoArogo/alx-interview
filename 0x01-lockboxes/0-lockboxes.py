@@ -16,9 +16,12 @@ def canUnlockAll(boxes):
         for key in box:
             if (key > len(boxes)):
                 return False
-            if (len(boxes[key - 1]) > 0):
+            if (key == 0):
                 det = True
-            else:
-                det = False
-                return det
+            elif (key > 0):
+                if (len(boxes[key - 1]) > 0):
+                    det = True
+                else:
+                    det = False
+                    return det
     return det
