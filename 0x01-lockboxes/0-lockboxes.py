@@ -11,14 +11,14 @@ def canUnlockAll(boxes):
 
     a key with the same number as a box opens that box.
     """
-    det = True
+    det = False
     for box in boxes:
         for key in box:
             if (key > len(boxes)):
                 return False
             if (key == 0):
                 det = True
-            elif (key > 0):
+            else:
                 if (len(boxes[key - 1]) > 0):
                     det = True
                 else:
