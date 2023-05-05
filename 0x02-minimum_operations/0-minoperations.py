@@ -1,19 +1,15 @@
 #!/usr/bin/python3
 
 '''
-Minimum Operations.
-Write a method that calculates.
-The fewest number of operations.
+Given a number n, write a method that calculates
+the fewest number of operations needed to result in
+exactly n H characters in the file.
 '''
 
 
 def minOperations(n: int) -> int:
     '''
-    Description.
-
-    ------------
-    Given a number n, write a method that calculates the fewest number
-    of operations needed to result in exactly n H characters in the file.
+    returns min operations to get n Hs
     '''
     i: int = 1
     op: int = 0
