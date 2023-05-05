@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """minOperations."""
 
+
 def minOperations(n: int) -> int:
     """
     Description.
