@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Log parsing
+log parsing
 """
 
 import sys
@@ -9,7 +9,7 @@ import re
 
 def printstat(code: dic, size: int) -> None:
     """
-    helper function
+    helper function to display stats
     """
     print(f"File size: {size}")
     for i in sorted(code.keys()):
