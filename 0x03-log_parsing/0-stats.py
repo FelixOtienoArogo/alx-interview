@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-
-""" script log parsing """
-
+"""
+script log parsing
+"""
 
 import sys
 import re
 
 
 def printstat(code, size):
-    """ Prints stats """
+    """
+    Prints stats
+    """
     print(f"File size: {size}")
     for i in sorted(code.keys()):
         if code[i] != 0:
