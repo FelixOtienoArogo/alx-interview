@@ -1,10 +1,16 @@
 #!/usr/bin/python3
-"""Log parsing."""
+"""
+Log parsing
+"""
+
 import sys
 import re
 
 
 def printstat(code: dic, size: int) -> None:
+    """
+    helper function
+    """
     print(f"File size: {size}")
     for i in sorted(code.keys()):
         if code[i] != 0:
