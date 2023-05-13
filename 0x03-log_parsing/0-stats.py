@@ -25,16 +25,16 @@ codes = {
     "405": 0,
     "500": 0
 }
-summ = 0
+size = 0
 
 
 def printstats():
     """
     Function that print stats about log
     """
-    global summ
+    global size
 
-    print('File size: {}'.format(summ))
+    print('File size: {}'.format(size))
     stcdor = sorted(codes.keys())
     for each in stcdor:
         if codes[each] > 0:
@@ -52,7 +52,7 @@ if __name__ == "__main__":
                 if fact[-2] in codes:
                     codes[fact[-2]] += 1
                 """ If there is a lenght """
-                summ += int(fact[-1])
+                size += int(fact[-1])
             except:
                 pass
             """ Printing control """
