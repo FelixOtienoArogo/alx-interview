@@ -5,6 +5,8 @@
 def validUTF8(data):
     """Determine if a given data set represents a valid UTF-8 encoding."""
     valid = False
+    if len(data) == 0:
+        return True
     for i in range(len(data)):
         char = data[i]
         msb = char >> 7
