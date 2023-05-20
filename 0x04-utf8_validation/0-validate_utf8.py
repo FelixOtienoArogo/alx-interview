@@ -4,8 +4,40 @@
 
 def validUTF8(data):
     """Determine if a given data set represents a valid UTF-8 encoding."""
-    mask = 1 << 7
-    for char in data:
-        if (mask & char) != 0:
-            return False
-    return True
+    valid = False
+    for i in range(len(data)):
+        char = data[i]
+        msb = char >> 7
+        if msb == 1:
+            msb = char >> 5
+            if msb ^ 6 == 0:
+                msb2 = data[i + 1] >> 6
+                if msb2 ^ 2 == 0:
+                    valid = True
+                    i += 2
+                else:
+                    return False
+            else:
+                msb = char >> 4
+                if msb ^ 14 == 0:
+                    msb2 = data[i + 1] >> 6
+                    msb3 = data[i + 2] >> 6
+                    if msb2 ^ 2 == 0 and msb3 ^ 2 == 0:
+                        valid = True
+                        i += 3
+                    else:
+                        return False
+                else:
+                    msb = char >> 3
+                    if msb ^ 30 == 0:
+                        msb2 = data[i + 1] >> 6
+                        msb3 = data[i + 2] >> 6
+                        msb4 = data[i + 3] >> 6
+                        if msb2 ^ 2 == 0 and msb3 ^ 2 == 0 and msb4 ^ 2 == 0:
+                            valid = True
+                            i += 4
+                        else:
+                            return False
+        else:
+            valid = True
+    return valid
