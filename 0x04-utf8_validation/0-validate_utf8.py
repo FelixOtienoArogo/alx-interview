@@ -44,6 +44,6 @@ def validUTF8(data):
                             i += 4
                         else:
                             return False
-        else:
+        elif msb ^ 0 == 0:
             valid = True
     return valid
