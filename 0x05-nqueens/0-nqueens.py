@@ -3,11 +3,11 @@
 import sys
 
 
-n = sys.argv[1]
-
 if len(sys.argv) != 2:
     print("Usage: nqueens N")
     exit(1)
+
+n = sys.argv[1]
 
 if not n.isdigit():
     print("N must be a number")
