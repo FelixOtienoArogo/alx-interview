@@ -14,12 +14,14 @@ def isPrime(n):
 
 def isWinner(x, nums):
     """Return name of the player that won the most rounds."""
-    winner = "Maria"
+    winner = None
     Maria = 0
     Ben = 0
     if not nums or x < 1:
         return None
     for n in nums:
+        if (x < 1):
+            return winner
         numbers = list(range(1, n + 1, 1))
 
         i = 0
@@ -42,6 +44,7 @@ def isWinner(x, nums):
             i += 1
         Ben += ben_win
         Maria += maria_win
+        x -= 1
     if(Ben < Maria):
         winner = "Maria"
     elif(Ben > Maria):
