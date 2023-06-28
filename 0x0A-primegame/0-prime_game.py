@@ -26,7 +26,7 @@ def isWinner(x, nums):
         play = 0
         ben_win = 0
         maria_win = 0
-        while(len(numbers) > 1):
+        while(len(numbers) >= 1 and i < len(numbers)):
             play += 1
             if isPrime(numbers[i]):
                 for j in numbers:
@@ -44,6 +44,8 @@ def isWinner(x, nums):
         Maria += maria_win
     if(Ben < Maria):
         winner = "Maria"
-    else:
+    elif(Ben > Maria):
         winner = "Ben"
+    else:
+        winner = None
     return winner
