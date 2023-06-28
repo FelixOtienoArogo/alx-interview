@@ -1,31 +1,32 @@
 #!/usr/bin/python3
-""" Module for Prime Game """
+"""Function isWinner."""
 
 
 def isWinner(x, nums):
-    """Solves Prime Game"""
+    """Return the player who won the most rounds."""
     if not nums or x < 1:
         return None
-    n = max(nums)
-    sieve = [True for _ in range(max(n + 1, 2))]
-    for i in range(2, int(pow(n, 0.5)) + 1):
-        if not sieve[i]:
+    maximum = max(nums)
+    winner = "Ben"
+    sort = [True for _ in range(max(maximum + 1, 2))]
+    for i in range(2, int(maximum ** 0.5) + 1):
+        if not sort[i]:
             continue
-        for j in range(i*i, n + 1, i):
-            sieve[j] = False
+        for j in range(i*i, maximum + 1, i):
+            sort[j] = False
 
-    sieve[0] = sieve[1] = False
+    sort[0] = sort[1] = False
     c = 0
-    for i in range(len(sieve)):
-        if sieve[i]:
+    for i in range(len(sort)):
+        if sort[i]:
             c += 1
-        sieve[i] = c
+        sort[i] = c
 
-    player1 = 0
+    maria_win = 0
     for n in nums:
-        player1 += sieve[n] % 2 == 1
-    if player1 * 2 == len(nums):
-        return None
-    if player1 * 2 > len(nums):
-        return "Maria"
-    return "Ben"
+        maria_win += sort[n] % 2 == 1
+    if maria_win * 2 == len(nums):
+        winner = None
+    if maria_win * 2 > len(nums):
+        winner = "Maria"
+    return winner
