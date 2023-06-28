@@ -1,54 +1,57 @@
 #!/usr/bin/python3
-"""Function isWinner."""
+"""Module defining isWinner function."""
 
 
-def isPrime(n):
-    """Determine that a number is a prime number."""
-    if n <= 1:
+def isWinner(x, nums):
+    """Function to get who has won in prime game"""
+    mariaWinsCount = 0
+    benWinsCount = 0
+
+    for num in nums:
+        roundsSet = list(range(1, num + 1))
+        primesSet = primes_in_range(1, num)
+
+        if not primesSet:
+            benWinsCount += 1
+            continue
+
+        isMariaTurns = True
+
+        while(True):
+            if not primesSet:
+                if isMariaTurns:
+                    benWinsCount += 1
+                else:
+                    mariaWinsCount += 1
+                break
+
+            smallestPrime = primesSet.pop(0)
+            roundsSet.remove(smallestPrime)
+
+            roundsSet = [x for x in roundsSet if x % smallestPrime != 0]
+
+            isMariaTurns = not isMariaTurns
+
+    if mariaWinsCount > benWinsCount:
+        return "Maria"
+
+    if mariaWinsCount < benWinsCount:
+        return "Ben"
+
+    return None
+
+
+def is_prime(n):
+    """Returns True if n is prime, else False."""
+    if n < 2:
         return False
-    for i in range(2, int(n**0.5) + 1):
+    for i in range(2, int(n ** 0.5) + 1):
         if n % i == 0:
             return False
     return True
 
 
-def isWinner(x, nums):
-    """Return name of the player that won the most rounds."""
-    winner = None
-    Maria = 0
-    Ben = 0
-    if not nums or x < 1:
-        return None
-    for n in nums:
-        if (x < 1):
-            return winner
-        numbers = list(range(1, n + 1, 1))
-
-        i = 0
-        play = 0
-        ben_win = 0
-        maria_win = 0
-        while(len(numbers) >= 1 and i < len(numbers)):
-            play += 1
-            if isPrime(numbers[i]):
-                for j in numbers:
-                    if j % numbers[i] == 0:
-                        numbers.remove(j)
-                        i = 0
-            if play % 2 == 0:
-                maria_win = 1
-                ben_win = 0
-            else:
-                ben_win = 1
-                maria_win = 0
-            i += 1
-        Ben += ben_win
-        Maria += maria_win
-        x -= 1
-    if(Ben < Maria):
-        winner = "Maria"
-    elif(Ben > Maria):
-        winner = "Ben"
-    else:
-        winner = None
-    return winner
+def primes_in_range(start, end):
+    """Returns a list of prime numbers between start and end (inclusive)."""
+    primes = [n for n in range(start, end+1) if is_prime(n)]
+    return primes
