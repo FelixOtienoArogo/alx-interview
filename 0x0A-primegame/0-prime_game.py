@@ -17,6 +17,8 @@ def isWinner(x, nums):
     winner = "Maria"
     Maria = 0
     Ben = 0
+    if not nums or x < 1:
+        return None
     for n in nums:
         numbers = list(range(1, n + 1, 1))
 
